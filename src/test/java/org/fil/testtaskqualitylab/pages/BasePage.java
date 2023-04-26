@@ -15,7 +15,12 @@ public class BasePage {
 	@BeforeAll
 	public static void setUpAll() {
 		Configuration.browserSize = "1280x800";
-		SelenideLogger.addListener("allure", new AllureSelenide());
+		Configuration.timeout = 5_000;
+		SelenideLogger.addListener("allure",
+				new AllureSelenide()
+						.savePageSource(false)
+						.screenshots(true)
+						.includeSelenideSteps(true));
 	}
 
 }
